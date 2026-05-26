@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import {
   ArrowRight,
@@ -9,23 +10,19 @@ import {
   Check,
   ChevronDown,
   Clock3,
-  Cpu,
-  Gauge,
-  Github,
   Globe2,
-  Linkedin,
   Mail,
-  MessageSquare,
   MousePointerClick,
   Network,
   Rocket,
   Sparkles,
   TrendingUp,
-  Twitter,
-  Zap,
 } from "lucide-react";
 
 const navItems = ["Services", "Projects", "Process", "FAQ"];
+const SUPPORT_EMAIL = "hello@bookiq.co";
+const COMPLIANCE_TEXT =
+  "By submitting this form, you agree to receive communications from Ceiro regarding your inquiry. Message frequency varies. Msg & data rates may apply. Reply STOP to opt out.";
 
 const oldWebsite = [
   "Outdated design",
@@ -54,13 +51,13 @@ const services = [
   {
     icon: Bot,
     title: "AI Lead Follow-Up",
-    copy: "Instant qualification, smart replies, and nurturing flows that keep warm leads moving.",
+    copy: "Instant qualification, compliant inquiry routing, and nurturing flows that keep warm leads moving.",
     tone: "from-mint-100 to-bluewash",
   },
   {
     icon: CalendarCheck,
     title: "Booking & CRM Integration",
-    copy: "Connect forms, calendars, pipelines, and reminders into one clean operating layer.",
+    copy: "Connect forms, calendars, pipelines, notifications, and support handoffs into one clean operating layer.",
     tone: "from-peach-100 to-white",
   },
   {
@@ -72,7 +69,7 @@ const services = [
   {
     icon: Network,
     title: "Automation Systems",
-    copy: "Automated handoffs, follow-ups, alerts, and reporting built around your growth workflow.",
+    copy: "Automated handoffs, follow-ups, alerts, and reporting built around real operational workflows.",
     tone: "from-white to-mint-100",
   },
 ];
@@ -101,7 +98,32 @@ const projects = [
   },
 ];
 
-const process = ["Audit", "Strategy", "Design", "Build", "Automate", "Launch"];
+const process = [
+  {
+    title: "Audit",
+    copy: "We review your current website, lead flow, and conversion bottlenecks to identify missed revenue opportunities.",
+  },
+  {
+    title: "Strategy",
+    copy: "We create a focused growth plan covering design, automation, lead capture, and conversion improvements.",
+  },
+  {
+    title: "Design",
+    copy: "We design a premium modern interface optimized for trust, clarity, and higher conversion rates.",
+  },
+  {
+    title: "Build",
+    copy: "We develop the website system, integrations, forms, automations, and responsive infrastructure.",
+  },
+  {
+    title: "Automate",
+    copy: "We connect AI follow-up, booking systems, lead qualification, and operational workflows.",
+  },
+  {
+    title: "Launch",
+    copy: "After testing and optimization, we deploy the system and monitor performance improvements.",
+  },
+];
 
 const testimonials = [
   {
@@ -138,7 +160,7 @@ const faqs = [
   },
   {
     q: "What does the AI automation do?",
-    a: "It captures, qualifies, routes, follows up, and nudges leads toward the next step with workflows tailored to your offer.",
+    a: "It captures, qualifies, routes, follows up, and nudges leads toward the next step with workflows tailored to your offer and communication preferences.",
   },
   {
     q: "How long does it take?",
@@ -146,7 +168,7 @@ const faqs = [
   },
   {
     q: "How do I get started?",
-    a: "Book a free audit. Ceiro will review your current funnel and show the highest-leverage opportunities before anything is built.",
+    a: `Book a free audit. Ceiro will review your current funnel and show the highest-leverage opportunities before anything is built. You can also contact support at ${SUPPORT_EMAIL}.`,
   },
 ];
 
@@ -248,7 +270,7 @@ function HeroVisual() {
                     Conversion flow
                   </p>
                   <h3 className="mt-2 text-2xl font-black tracking-[-0.04em] text-neutral-950">
-                    Lead capture dashboard
+                    Lead operations dashboard
                   </h3>
                 </div>
                 <LogoMark className="h-10 w-10" />
@@ -294,10 +316,10 @@ function HeroVisual() {
                 </div>
                 <div className="mt-5 space-y-3">
                   <div className="max-w-[82%] rounded-2xl bg-white/10 p-3 text-sm text-white/80">
-                    New lead from pricing page. Budget confirmed.
+                    New inquiry from audit page. Budget confirmed.
                   </div>
                   <div className="ml-auto max-w-[78%] rounded-2xl bg-[#dff4ff] p-3 text-sm font-semibold text-neutral-950">
-                    Book audit link sent.
+                    Consent logged. Audit link sent.
                   </div>
                 </div>
               </div>
@@ -562,6 +584,15 @@ export function CeiroLandingPage() {
             Premium web design, AI-powered lead systems, and automation for
             businesses that want to grow faster.
           </p>
+          <p
+            className="reveal mx-auto mt-3 max-w-xl text-sm font-semibold text-neutral-500"
+            style={{ animationDelay: "90ms" }}
+          >
+            Business inquiries and customer support:{" "}
+            <a href={`mailto:${SUPPORT_EMAIL}`} className="text-neutral-950 underline decoration-black/20 underline-offset-4 transition hover:decoration-black">
+              {SUPPORT_EMAIL}
+            </a>
+          </p>
           <div
             className="reveal mt-7 flex flex-col items-center justify-center gap-3 sm:flex-row"
             style={{ animationDelay: "110ms" }}
@@ -589,7 +620,7 @@ export function CeiroLandingPage() {
           <SectionHeader
             kicker="Website System"
             title="Your website should work harder than a brochure."
-            copy="Most businesses lose customers because their website is outdated, slow to respond, poorly optimized for mobile, and lacks automated follow-up systems."
+            copy="Most businesses lose customers because their website is outdated, slow to respond, poorly optimized for mobile, and lacks accountable follow-up systems."
           />
           <div className="mt-14 grid gap-6 lg:grid-cols-2">
             <div className="reveal rounded-[34px] border border-black/10 bg-white p-7 shadow-soft">
@@ -659,7 +690,7 @@ export function CeiroLandingPage() {
           <SectionHeader
             kicker="Projects"
             title="Featured systems with startup-grade polish."
-            copy="Believable modern UI directions for brands that need to earn trust quickly and move users toward action."
+            copy="Operationally realistic UI directions for brands that need to earn trust quickly, capture inquiries clearly, and move users toward action."
           />
           <div className="mt-14 grid gap-6 lg:grid-cols-3">
             {projects.map((project, index) => (
@@ -705,16 +736,16 @@ export function CeiroLandingPage() {
           <div className="relative mt-16 grid gap-4 md:grid-cols-2 lg:grid-cols-6">
             {process.map((step, index) => (
               <div
-                key={step}
+                key={step.title}
                 className="reveal rounded-[28px] border border-black/10 bg-white/80 p-5 shadow-soft transition hover:-translate-y-1"
                 style={{ animationDelay: `${index * 55}ms` }}
               >
                 <div className="mb-10 flex h-11 w-11 items-center justify-center rounded-2xl bg-neutral-950 text-sm font-black text-white">
                   {index + 1}
                 </div>
-                <h3 className="text-xl font-black tracking-[-0.04em]">{step}</h3>
+                <h3 className="text-xl font-black tracking-[-0.04em]">{step.title}</h3>
                 <p className="mt-3 text-sm leading-6 text-neutral-500">
-                  A focused stage that moves the site closer to launch without losing polish.
+                  {step.copy}
                 </p>
               </div>
             ))}
@@ -800,42 +831,58 @@ export function CeiroLandingPage() {
               Modern design. AI automation. Better conversions.
             </p>
             <a
-              href="mailto:hello@ceiro.ai?subject=Free%20Ceiro%20Audit"
+              href={`mailto:${SUPPORT_EMAIL}?subject=Free%20Ceiro%20Audit`}
               className="mt-9 inline-flex items-center gap-2 rounded-full bg-white px-6 py-4 text-sm font-black text-neutral-950 shadow-[0_18px_45px_rgba(255,255,255,0.18)] transition hover:-translate-y-0.5"
             >
               Book Free Audit
               <ArrowRight className="h-4 w-4" />
             </a>
+            <p className="mx-auto mt-5 max-w-2xl text-xs font-medium leading-5 text-white/48">
+              {COMPLIANCE_TEXT} For support, email{" "}
+              <a href={`mailto:${SUPPORT_EMAIL}`} className="text-white/75 underline decoration-white/25 underline-offset-4 transition hover:text-white">
+                {SUPPORT_EMAIL}
+              </a>
+              .
+            </p>
           </div>
         </div>
       </section>
 
       <footer className="px-5 pb-10 sm:px-8">
         <div className="mx-auto max-w-6xl border-t border-black/10 py-8">
-          <div className="flex flex-col gap-8 md:flex-row md:items-center md:justify-between">
+          <div className="flex flex-col gap-8 lg:flex-row lg:items-start lg:justify-between">
             <BrandLockup />
-            <div className="flex flex-wrap items-center gap-5 text-sm font-bold text-neutral-500">
-              {navItems.map((item) => (
-                <a key={item} href={`#${item.toLowerCase()}`} className="transition hover:text-neutral-950">
-                  {item}
+            <div className="grid gap-6 text-sm font-bold text-neutral-500 sm:grid-cols-2 lg:grid-cols-[1fr_1fr_1.3fr]">
+              <div className="flex flex-col gap-3">
+                {navItems.map((item) => (
+                  <a key={item} href={`#${item.toLowerCase()}`} className="transition hover:text-neutral-950">
+                    {item}
+                  </a>
+                ))}
+              </div>
+              <div className="flex flex-col gap-3">
+                <Link href="/privacy" className="transition hover:text-neutral-950">
+                  Privacy Policy
+                </Link>
+                <Link href="/terms" className="transition hover:text-neutral-950">
+                  Terms & Conditions
+                </Link>
+                <a href={`mailto:${SUPPORT_EMAIL}`} className="transition hover:text-neutral-950">
+                  Contact
                 </a>
-              ))}
-              <a href="mailto:hello@ceiro.ai" className="inline-flex items-center gap-2 transition hover:text-neutral-950">
-                <Mail className="h-4 w-4" />
-                hello@ceiro.ai
-              </a>
-            </div>
-            <div className="flex items-center gap-2">
-              {[Twitter, Linkedin, Github].map((Icon, index) => (
-                <a
-                  key={index}
-                  href="#"
-                  aria-label="Ceiro social profile"
-                  className="flex h-10 w-10 items-center justify-center rounded-full border border-black/10 bg-white/65 text-neutral-600 transition hover:-translate-y-0.5 hover:text-neutral-950"
-                >
-                  <Icon className="h-4 w-4" />
+              </div>
+              <div className="flex flex-col gap-3">
+                <a href={`mailto:${SUPPORT_EMAIL}`} className="inline-flex items-center gap-2 transition hover:text-neutral-950">
+                  <Mail className="h-4 w-4" />
+                  {SUPPORT_EMAIL}
                 </a>
-              ))}
+                <p className="max-w-xs text-sm font-semibold leading-6 text-neutral-500">
+                  Support for website, automation, and lead-system inquiries for bookiq.co.
+                </p>
+                <p className="text-sm font-semibold text-neutral-400">
+                  © 2026 Ceiro. All rights reserved.
+                </p>
+              </div>
             </div>
           </div>
         </div>
