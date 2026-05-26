@@ -61,7 +61,7 @@ export function LegalPage({
               {intro}
             </p>
             <p className="mt-4 text-sm font-bold text-neutral-500">
-              Effective date: May 26, 2026
+              Effective Date: April 15, 2026
             </p>
           </div>
 
